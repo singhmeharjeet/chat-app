@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,6 +13,10 @@ module.exports = {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+				"gradient-dark":
+					"linear-gradient(11deg, #fb7670 0%, hsl(222.2 47.4% 11.2%) 67%, #373636 100%)",
+				"gradient-dark-inverse":
+					"linear-gradient(191deg, #fb7670 0%, hsl(222.2 47.4% 11.2%) 67%, #373636 100%)",
 			},
 			colors: {
 				border: "hsl(var(--border))",
@@ -21,6 +26,7 @@ module.exports = {
 				foreground: "hsl(var(--foreground))",
 				primary: {
 					DEFAULT: "hsl(var(--primary))",
+					hover: "hsl(var(--primary-hover))",
 					foreground: "hsl(var(--primary-foreground))",
 				},
 				secondary: {
@@ -48,10 +54,22 @@ module.exports = {
 					foreground: "hsl(var(--card-foreground))",
 				},
 			},
+
+			keyframes: {
+				"accordion-down": {
+					from: { height: 0 },
+					to: { height: "var(--radix-accordion-content-height)" },
+				},
+				"accordion-up": {
+					from: { height: "var(--radix-accordion-content-height)" },
+					to: { height: 0 },
+				},
+			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 			},
+
 			borderRadius: {
 				lg: `var(--radius)`,
 				md: `calc(var(--radius) - 2px)`,
@@ -59,8 +77,15 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["var(--font-sans)", ...fontFamily.sans],
+				heading: ["Lobster", "cursive", ...fontFamily.sans],
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("tw-elements/dist/plugin.cjs"),
+		require("@tailwindcss/forms"),
+		require("tailwind-gradient-mask-image"),
+		require("@tailwindcss/container-queries"),
+	],
 };
