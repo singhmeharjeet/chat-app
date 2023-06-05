@@ -1,6 +1,11 @@
 # Chit Chat - A full-stack realtime messaging chat application
 
-A project to learn modern full-stack development made by Josh.
+The ultimate chat app designed to bring your conversations
+to life! With its innovative features and intuitive
+interface, Chit Chat revolutionizes the way we connect and
+communicate. Get ready to embark on an exciting journey of
+limitless connections, vibrant communities, and
+unforgettable shared moments.
 
 ## Features
 
